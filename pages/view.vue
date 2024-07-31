@@ -1,0 +1,3 @@
+<template>
+  View Donations
+</template>
