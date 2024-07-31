@@ -30,9 +30,6 @@ jobs:
       - name: Push Container
         # TODO - Build this based on the repository name
         env:
-          REPOSITORY_OWNER: ${{ env.REPOSITORY_OWNER }}
-          REPOSITORY_NAME: ${{ env.REPOSITORY_NAME }}
+          REPOSITORY: ${{ github.repository }}
         run: |
-          echo $REPOSITORY_OWNER
-          echo $REPOSITORY_NAME
-          docker push ghcr.io/$REPOSITORY_OWNER/$REPOSITORY_NAME:latest
+          docker push ghcr.io/$REPOSITORY:latest
