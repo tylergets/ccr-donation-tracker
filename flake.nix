@@ -39,7 +39,12 @@
               pkgs.busybox
               pkgs.mdbtools
             ];
-            config.Cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/bin/ccr-donation-tracker";
+            config = {
+              Cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/bin/ccr-donation-tracker";
+              Env = [
+                "DATABASE_PATH=/data/db.sqlite"
+              ];
+            };
           };
 
         };
