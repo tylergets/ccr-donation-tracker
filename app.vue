@@ -2,7 +2,7 @@
   <Title>
     {{route.meta.title}}
   </Title>
-  <div class="bg-black py-3 text-white mb-2">
+  <div class="bg-black py-3 text-white mb-2 no-print">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between w-full">
         <div>
@@ -51,6 +51,23 @@ html, body {
 .link {
   @apply text-blue-600 underline;
 }
+
+@media print
+{
+  .pagebreak { page-break-before: always; } /* page-break-after works, as well */
+
+  .no-print, .no-print *
+  {
+    display: none !important;
+  }
+}
+
+@media screen {
+  .only-print {
+    display: none;
+  }
+}
+
 </style>
 
 <script setup>

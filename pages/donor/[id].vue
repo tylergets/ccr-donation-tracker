@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+const router = useRouter();
+const route = useRoute();
 
 const { data: receivables, pending } = await useFetch('/api/receivables')
+const { data: donor } = await useFetch('/api/donor/' + route.params.id)
 
 const errorResult: any = ref(null);
 
-const router = useRouter();
 
 const receivedByLast = useLocalStorage('receivedByLast', '');
 
@@ -30,7 +32,9 @@ async function createDonation(body: any) {
       donorId: parseInt(body.donorId),
       itemCounts: body.items,
       totalCount: totalCount.value,
+      dataDestruction: body.dataDestruction,
       notes: body.notes,
+      email: body.email,
       receivedBy: body.receivedBy,
     },
   })
@@ -38,8 +42,7 @@ async function createDonation(body: any) {
   if (unref(error)) {
     errorResult.value = unref(error);
   } else {
-    alert('Donation created!');
-    router.push('/create');
+    router.push('/donation/' + data.value.donation.id);
   }
 
 }
@@ -48,8 +51,6 @@ definePageMeta({
   title: 'Create Donation'
 });
 
-const route = useRoute();
-
 function add(name: string, amount: number = 1) {
   donateData.value.items[name] = (parseInt(donateData.value.items[name]) || 0) + amount;
 }
@@ -57,6 +58,15 @@ function add(name: string, amount: number = 1) {
 function remove(name: string, amount: number = 1) {
   donateData.value.items[name] = (parseInt(donateData.value.items[name]) || 0) - amount;
 }
+
+const requestDestructionLetter = ref(false);
+
+const donorEmail = computed(() => {
+  if (donor.value) {
+    return unref(donor).email
+  }
+  return "";
+})
 </script>
 
 
@@ -64,6 +74,15 @@ function remove(name: string, amount: number = 1) {
 
   <div v-if="errorResult">
     {{errorResult}}
+  </div>
+
+  <div v-if="donor">
+    <div>
+      {{donor.firstName}} {{donor.lastName}}
+    </div>
+    <div>
+      {{donor.email ?? "No Email Address"}}
+    </div>
   </div>
 
   <div v-if="!pending">
@@ -99,6 +118,9 @@ function remove(name: string, amount: number = 1) {
           <FormKit type="textarea" label="Notes" name="notes"/>
           <FormKit v-model="receivedByLast" type="text" label="Received By" name="receivedBy" validation="required"/>
           <FormKit v-model="totalCount" type="number" disabled label="Total Item Count" />
+
+          <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
+          <FormKit type="email" :required="requestDestructionLetter" v-model="donorEmail" name="email" label="Donor Email" />
 
           <FormKit type="submit"/>
         </div>

@@ -39,6 +39,8 @@ export const donations = sqliteTable('donations', {
 
   notes: text('notes'),
 
+  dataDestruction: integer('isIndividual').notNull().default(0),
+
   receivedBy: text('receivedBy').notNull(),
 
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),

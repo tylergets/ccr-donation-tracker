@@ -1,0 +1,1 @@
+ALTER TABLE `donations` ADD `isIndividual` integer DEFAULT 0 NOT NULL;
