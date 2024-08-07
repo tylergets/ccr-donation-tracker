@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    image: ghcr.io/tylergets/ccr-donation-tracker:latest
+    ports:
+      - "80:3000"
+    restart: unless-stopped
+    volumes:
+      - ./state:/data
+    env_file:
+      - .env
