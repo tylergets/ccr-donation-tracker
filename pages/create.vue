@@ -38,9 +38,11 @@
   </div>
   <div v-else>
     <div>
-      <ol class="list-decimal list-inside">
+      <ol class="list-decimal list-inside py-2">
         <li>Enter A Donors Last Name, Email, or Phone</li>
         <li>Press "Lookup Donor"</li>
+        <li>If previous donor is found, select them from the list below.</li>
+        <li>If not, you will be prompted to fill out their information.</li>
       </ol>
     </div>
     <div class="flex justify-between items-center">
@@ -75,7 +77,7 @@
     </div>
   </div>
 
-  <div v-if="existingUsers.length > 0">
+  <div v-if="existingUsers.length > 0" class="mt-4">
     <table class="table w-full table-auto">
       <thead>
         <tr>

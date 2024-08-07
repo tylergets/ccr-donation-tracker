@@ -19,6 +19,13 @@ function formatDate(dateString) {
   // Then specify how you want your dates to be formatted
   return new Intl.DateTimeFormat('default', {dateStyle: 'long'}).format(date);
 }
+
+const thankYouText = [
+  `Thanks for thinking of Cincinnati Computer Reuse when disposing of unneeded tech items. Every computer donated to our nonprofit has value. Working desktops and laptops can be re-imaged with licensed software and prepared for a new home. Broken or obsolete items can be deconstructed and the materials sold as scrap. Scrap sales fund approximately 30% of our operating costs.`,
+  `Our goal is to make access to technology affordable for everyone. Your donation helps further our mission.`
+];
+
+const dataLetterText = `A Data Destruction Letter Will Be Emailed To You.`;
 </script>
 
 
@@ -27,7 +34,7 @@ function formatDate(dateString) {
     <div ><h1 class="text-xl font-bold mb-4">Donation Receipt</h1>
 
       <div class="mb-4" v-if="donation.dataDestruction === 1">
-        <div class="text-2xl underline font-bold">A Data Destruction Letter Has Been Requested</div>
+        <div class="text-2xl underline font-bold">{{dataLetterText}}</div>
       </div>
 
       <div>
@@ -46,14 +53,18 @@ function formatDate(dateString) {
       </div>
 
       <div class="mt-2">
-        Thank you for your donation to Cincinnati Computer Reuse!
+        <div class="mt-2 flex-col flex gap-4">
+          <div v-for="text in thankYouText">
+            {{text}}
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="donation.dataDestruction" class="only-print pagebreak">
       <h1 class="text-xl font-bold mb-4">Destruction Receipt</h1>
 
       <div class="mb-4" >
-        <div class="text-2xl underline font-bold">A Data Destruction Letter Has Been Requested</div>
+        <div class="text-2xl underline font-bold">{{dataLetterText}}</div>
       </div>
 
       <div class="mb-4" >
@@ -77,9 +88,6 @@ function formatDate(dateString) {
         </div>
       </div>
 
-      <div class="mt-2">
-        Thank you for your donation to Cincinnati Computer Reuse!
-      </div>
     </div>
   </div>
 </template>

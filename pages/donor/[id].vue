@@ -9,7 +9,8 @@ const { data: donor } = await useFetch('/api/donor/' + route.params.id)
 const errorResult: any = ref(null);
 
 
-const receivedByLast = useLocalStorage('receivedByLast', '');
+// const receivedByLast = useLocalStorage('receivedByLast', '');
+const receivedByLast = ref('');
 
 const donateData: any = ref({ items: {} });
 

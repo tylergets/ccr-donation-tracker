@@ -57,12 +57,13 @@ export default eventHandler(async (event) => {
         from: 'office@cincinnaticomputercooperative.org',
         subject: 'Thank you for your donation!',
         text: [
-            `Thank you for your donation to Cincinnati Computer Reuse!`,
+            `Thanks for thinking of Cincinnati Computer Reuse when disposing of unneeded tech items. Every computer donated to our nonprofit has value. Working desktops and laptops can be re-imaged with licensed software and prepared for a new home. Broken or obsolete items can be deconstructed and the materials sold as scrap. Scrap sales fund approximately 30% of our operating costs. `,
+            `Our goal is to make access to technology affordable for everyone. Your donation helps further our mission.`,
             '',
             ...itemCounts,
             '',
             ...(body.dataDestruction ?? false) ? [
-                `A Data Destruction Letter hsa been requested. Your donation ID is ${donation.id}`
+                `A Data Destruction Letter has been requested. Your donation ID is ${donation.id}`
             ] : [],
         ].join("\n"),
       });
