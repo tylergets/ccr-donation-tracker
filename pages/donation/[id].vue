@@ -25,7 +25,6 @@ const thankYouText = [
   `Our goal is to make access to technology affordable for everyone. Your donation helps further our mission.`
 ];
 
-const dataLetterText = `A Data Destruction Letter Will Be Emailed To You.`;
 </script>
 
 
@@ -34,7 +33,10 @@ const dataLetterText = `A Data Destruction Letter Will Be Emailed To You.`;
     <div ><h1 class="text-xl font-bold mb-4">Donation Receipt</h1>
 
       <div class="mb-4" v-if="donation.dataDestruction === 1">
-        <div class="text-2xl underline font-bold">{{dataLetterText}}</div>
+        <div class="border p-4 font-bold flex flex-col gap-2">
+          <div class="text-xl">Data Destruction Letter Requested</div>
+          <div>The Data Destruction Letter Will Be Emailed To You At {{donation.donor.email}}</div>
+        </div>
       </div>
 
       <div>
@@ -67,9 +69,11 @@ const dataLetterText = `A Data Destruction Letter Will Be Emailed To You.`;
         <div class="text-2xl underline font-bold">{{dataLetterText}}</div>
       </div>
 
-      <div class="mb-4" >
-        <div class="text-2xl underline font-bold border-2 py-6 px-4">
-          Please Keep This Print-Out With The Donated Items!
+      <div class="mb-4" v-if="donation.dataDestruction === 1">
+        <div class="border p-4 font-bold flex flex-col gap-2">
+          <div class="text-xl">Data Destruction Letter Requested</div>
+          <div>Please Keep This Print-Out With The Donated Items!</div>
+          <div>The Data Destruction Letter Should Be Emailed To {{donation.donor.email}}</div>
         </div>
       </div>
 

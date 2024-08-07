@@ -63,7 +63,7 @@ export default eventHandler(async (event) => {
             ...itemCounts,
             '',
             ...(body.dataDestruction ?? false) ? [
-                `A Data Destruction Letter has been requested. Your donation ID is ${donation.id}`
+                `A Data Destruction Letter has been requested and will follow on a separate email when the hard-drives have been securely erased or destroyed. Your donation ID is ${donation.id}`
             ] : [],
         ].join("\n"),
       });
@@ -78,10 +78,10 @@ export default eventHandler(async (event) => {
         to: "office@cincinnaticomputercooperative.org",
         from: 'office@cincinnaticomputercooperative.org',
         replyTo: donor.email ?? body.email,
-        subject: 'Data Destruction Request',
+        subject: 'Data Destruction Letter Requested',
         text: [
             `A Data Destruction Letter Has Been Requested for Donation #${donation.id}`,
-            `${donor.firstName} ${donor.lastName}`,
+            `${donor.firstName ?? ""} ${donor.lastName ?? ""}`,
             `${donor.email}`,
             '',
             ...itemCounts,
