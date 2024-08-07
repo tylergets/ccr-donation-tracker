@@ -2,9 +2,12 @@
 import nodemailer from 'nodemailer';
 
 const transport = nodemailer.createTransport({
-    host: 'localhost',
-    port: 1025,
-});
+    host: process.env.MAIL_HOST ?? "localhost", 
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS
+    }
+  });
 
 export function useEmail() {
     return {
