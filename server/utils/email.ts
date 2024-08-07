@@ -12,12 +12,16 @@ const transport = nodemailer.createTransport({
 export function useEmail() {
     return {
         send: async ({ to, subject, text }: any) => {
-            return transport.sendMail({
+            console.log(`Sending email to ${to}`);
+            const result = await transport.sendMail({
                 from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
                 to,
                 subject,
                 text,
             });
+            console.log(`Email has been sent!`);
+            console.log(result);
+            return result;
         }
     };
 

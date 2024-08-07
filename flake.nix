@@ -7,7 +7,11 @@
     devenv.url = "github:cachix/devenv";
   };
 
-  outputs = inputs @ {self, flake-parts, ...}:
+  outputs = inputs @ {
+    self,
+    flake-parts,
+    ...
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
@@ -43,10 +47,10 @@
               Cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/bin/ccr-donation-tracker";
               Env = [
                 "DATABASE_PATH=/data/db.sqlite"
+                # "MIGRATIONS_FOLDER=${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/lib/node_modules/ccr-donation-tracker/server/database/migrations"
               ];
             };
           };
-
         };
 
         formatter = pkgs.alejandra;
@@ -69,13 +73,12 @@
           };
 
           processes = {
-#            watch.exec = "npm run dev";
+            #            watch.exec = "npm run dev";
           };
 
           services.mailhog = {
             enable = true;
           };
-
         };
       };
     };
