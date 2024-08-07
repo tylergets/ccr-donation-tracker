@@ -13,7 +13,7 @@ export function useEmail() {
     return {
         send: async ({ to, subject, text }: any) => {
             return transport.sendMail({
-                from: 'office@cincinnaticomputercooperative.org',
+                from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
                 to,
                 subject,
                 text,
