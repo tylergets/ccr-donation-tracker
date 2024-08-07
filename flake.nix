@@ -48,7 +48,7 @@
               Cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/bin/ccr-donation-tracker";
               Env = [
                 "DATABASE_PATH=/data/db.sqlite"
-                # "MIGRATIONS_FOLDER=${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/lib/node_modules/ccr-donation-tracker/server/database/migrations"
+                "MIGRATIONS_FOLDER=${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/lib/node_modules/ccr-donation-tracker/server/database/migrations"
               ];
             };
           };
