@@ -42,6 +42,7 @@
               self.packages.x86_64-linux.server
               pkgs.busybox
               pkgs.mdbtools
+              pkgs.cacert
             ];
             config = {
               Cmd = "${self.packages.${pkgs.stdenv.hostPlatform.system}.server}/bin/ccr-donation-tracker";
