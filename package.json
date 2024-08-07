@@ -34,6 +34,7 @@
     "vue": "latest"
   },
   "devDependencies": {
+    "@kgierke/nuxt-basic-auth": "^1.6.0",
     "@types/nodemailer": "^6.4.15",
     "drizzle-kit": "^0.23.0"
   }

@@ -23,12 +23,14 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="flex">
-    <FormKit @submit="exportDonations" type="form">
-      <FormKit type="datetime-local" label="Start" name="start"/>
-      <FormKit type="datetime-local" label="End" name="end"/>
-    </FormKit>
-  </div>
+  <PasswordProtect>
+    <div class="flex">
+      <FormKit @submit="exportDonations" type="form">
+        <FormKit type="datetime-local" label="Start" name="start"/>
+        <FormKit type="datetime-local" label="End" name="end"/>
+      </FormKit>
+    </div>
+  </PasswordProtect>
 </template>
 
 <style scoped>

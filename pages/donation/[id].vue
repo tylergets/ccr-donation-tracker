@@ -52,8 +52,14 @@ function formatDate(dateString) {
     <div v-if="donation.dataDestruction" class="only-print pagebreak">
       <h1 class="text-xl font-bold mb-4">Destruction Receipt</h1>
 
-      <div class="mb-4" v-if="donation.dataDestruction === 1">
+      <div class="mb-4" >
         <div class="text-2xl underline font-bold">A Data Destruction Letter Has Been Requested</div>
+      </div>
+
+      <div class="mb-4" >
+        <div class="text-2xl underline font-bold border-2 py-6 px-4">
+          Please Keep This Print-Out With The Donated Items!
+        </div>
       </div>
 
       <div>

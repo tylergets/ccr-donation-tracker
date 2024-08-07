@@ -67,6 +67,15 @@ const donorEmail = computed(() => {
   }
   return "";
 })
+
+const hasMonitor = computed(() => {
+  return Object.entries(donateData.value.items).some(([key, count]) => {
+    if (key.toLowerCase().includes('monitor') && count > 0) {
+      return true;
+    }
+    return false;
+  });
+})
 </script>
 
 
@@ -91,6 +100,9 @@ const donorEmail = computed(() => {
       <div class="flex gap-10">
         <div>
           <div class="font-bold text-xl py-4">Items Being Received</div>
+          <div v-if="hasMonitor">
+            <div class="font-bold underline text-red-500">A $5 Donation Is Requested Per Monitor Donated</div>
+          </div>
           <FormKit type="group" name="items">
             <div v-for="receivable in receivables">
               <div class="flex items-center gap-2">

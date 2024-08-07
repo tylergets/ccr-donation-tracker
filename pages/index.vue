@@ -13,15 +13,18 @@
     <nuxt-link class="btn-primary-green" to="/create">
       Record New Donation
     </nuxt-link>
-    <nuxt-link class="btn-primary" to="/export">
-      Export Data
-    </nuxt-link>
-    <nuxt-link class="btn-primary" to="/top">
-      Top Donators
-    </nuxt-link>
-    <nuxt-link class="btn-primary" to="/all">
-      All Donators
-    </nuxt-link>
+
+    <div class="flex gap-2 items-center justify-center">
+      <nuxt-link class="btn-primary" to="/export">
+        Export Data
+      </nuxt-link>
+      <nuxt-link class="btn-primary" to="/top">
+        Top Donators
+      </nuxt-link>
+      <nuxt-link class="btn-primary" to="/all">
+        All Donators
+      </nuxt-link>
+    </div>
   </div>
 </template>
 

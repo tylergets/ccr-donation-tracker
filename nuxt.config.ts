@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         "@nuxt/icon",
     ],
 
+
     telemetry: false,
 
     nitro: {
@@ -18,6 +19,12 @@ export default defineNuxtConfig({
         // experimental: {
         //     tasks: true
         // }
+    },
+
+    runtimeConfig: {
+        public: {
+            reportsPassword: '',
+        }
     },
 
     formkit: {

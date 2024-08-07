@@ -1,24 +1,28 @@
 <template>
+  <PasswordProtect>
 
-  <div v-if="message" class="font-bold text-red-500 py-2">
-    {{message}}
-  </div>
 
-  <div v-if="pending">
-    Loading... please wait
-  </div>
-  <div v-else>
-    <div class="mb-2">Data loaded: {{data.length}}</div>
-    <div class="h-[500px]">
-      <AgGridVue
-          :gridOptions="gridOptions"
-          :rowData="data"
-          style="height: 900px"
-          class="ag-theme-quartz"
-      />
+    <div v-if="message" class="font-bold text-red-500 py-2">
+      {{message}}
     </div>
-  </div>
 
+    <div v-if="pending">
+      Loading... please wait
+    </div>
+    <div v-else>
+      <div class="mb-2">Data loaded: {{data.length}}</div>
+      <div class="h-[500px]">
+        <AgGridVue
+            :gridOptions="gridOptions"
+            :rowData="data"
+            style="height: 900px"
+            class="ag-theme-quartz"
+        />
+      </div>
+    </div>
+
+
+  </PasswordProtect>
 </template>
 
 <script setup>

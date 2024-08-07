@@ -20,6 +20,12 @@
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <NuxtPage/>
   </div>
+  <div class="flex flex-col text-xs mt-4 items-center justify-center gap-2 no-print">
+    <div>
+      <a class="text-blue-500 underline" href="https://github.com/tylergets/ccr-donation-tracker">View On Github</a>
+    </div>
+    <div>Contact <a class="text-blue-500 underline" href="mailto:tylergetsay@gmail.com">Tyler Getsay</a> for support</div>
+  </div>
 </template>
 
 <style>

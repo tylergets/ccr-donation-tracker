@@ -5,6 +5,7 @@
   </div>
 
   <div v-if="createNew">
+
     <FormKit v-model="customerData" :actions="false" @submit="createNewDonor" type="form">
       <div class="mb-2 font-bold text-lg">Donor Information</div>
 
@@ -17,8 +18,8 @@
         <FormKit type="tel" placeholder="440-409-4081" name="phone" label="Phone Number" />
       </div>
       <div class="flex gap-4">
-        <FormKit type="radio" name="isIndividual" :options="[{ value: 1, label: 'Yes' }, { value: 0, label: 'No' }]" label="Is Individual?" />
-        <FormKit type="text" v-if="!customerData.isIndividual" name="businessName" label="Business Name" />
+        <FormKit type="radio" name="isBusiness" :options="[{ value: 1, label: 'Yes' }, { value: 0, label: 'No' }]" label="Is This A Business?" />
+        <FormKit type="text" v-if="customerData.isBusiness" name="businessName" label="Business Name" />
       </div>
 
       <div class="mb-2 font-bold text-lg">Address Information</div>
@@ -36,7 +37,12 @@
     </FormKit>
   </div>
   <div v-else>
-
+    <div>
+      <ol class="list-decimal list-inside">
+        <li>Enter A Donors Last Name, Email, or Phone</li>
+        <li>Press "Lookup Donor"</li>
+      </ol>
+    </div>
     <div class="flex justify-between items-center">
 
       <div class="flex-1">
@@ -110,6 +116,7 @@ const createNew = ref(false);
 const customerData = ref({
   city: 'Cincinnati',
   isIndividual: true,
+  isBusiness: false,
   state: 'OH'
 });
 const existingUsers = ref([]);
@@ -123,7 +130,7 @@ async function createNewDonor(formData) {
     body: formData,
   });
 
-  formData.isBusiness = !formData.isIndividual;
+  formData.isIndividual = !formData.isBusiness;
 
   if(unref(error)) {
     message.value = unref(error);
