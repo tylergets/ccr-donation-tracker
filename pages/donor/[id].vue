@@ -131,7 +131,7 @@ const hasMonitor = computed(() => {
           <FormKit type="textarea" label="Notes" name="notes"/>
           <FormKit v-model="receivedByLast" type="text" label="Received By" name="receivedBy" validation="required"/>
           <FormKit v-model="totalCount" type="number" disabled label="Total Item Count" />
-          
+
           <div v-if="donor.isBusiness === 1">
             <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
           </div>

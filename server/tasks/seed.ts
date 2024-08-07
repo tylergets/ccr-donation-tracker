@@ -11,7 +11,6 @@ export async function seedDb() {
     "Portable Electronics",
     "CRT Monitor",
     "LCD Monitor",
-    "TV",
     "Network Device",
     "UPS",
     "Printer",
