@@ -102,7 +102,7 @@ const hasMonitor = computed(() => {
         <div>
           <div class="font-bold text-xl py-4">Items Being Received</div>
           <div v-if="hasMonitor">
-            <div class="font-bold underline text-red-500">A $5 Donation Is Requested Per Monitor Donated</div>
+            <div class="text-2xl font-bold underline text-red-500">A $5 Donation Is Requested Per Monitor Donated</div>
           </div>
           <FormKit type="group" name="items">
             <div v-for="receivable in receivables">
@@ -131,8 +131,11 @@ const hasMonitor = computed(() => {
           <FormKit type="textarea" label="Notes" name="notes"/>
           <FormKit v-model="receivedByLast" type="text" label="Received By" name="receivedBy" validation="required"/>
           <FormKit v-model="totalCount" type="number" disabled label="Total Item Count" />
+          
+          <div v-if="donor.isBusiness === 1">
+            <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
+          </div>
 
-          <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
           <FormKit type="email" :required="requestDestructionLetter" v-model="donorEmail" name="email" label="Donor Email" />
 
           <FormKit type="submit"/>
