@@ -54,7 +54,7 @@ export default eventHandler(async (event) => {
     if (donor.email) {
       await send({
         to: donor.email,
-        from: 'office@cincinnaticomputercooperative.org',
+        from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
         subject: 'Thank you for your donation!',
         text: [
             `Thanks for thinking of Cincinnati Computer Reuse when disposing of unneeded tech items. Every computer donated to our nonprofit has value. Working desktops and laptops can be re-imaged with licensed software and prepared for a new home. Broken or obsolete items can be deconstructed and the materials sold as scrap. Scrap sales fund approximately 30% of our operating costs. `,
@@ -75,8 +75,8 @@ export default eventHandler(async (event) => {
   try {
     if (body.dataDestruction) {
       await send({
-        to: "office@cincinnaticomputercooperative.org",
-        from: 'office@cincinnaticomputercooperative.org',
+        to: process.env.MAIL_FROM ?? 'office@ccreuse.org',
+        from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
         replyTo: donor.email ?? body.email,
         subject: 'Data Destruction Letter Requested',
         text: [
