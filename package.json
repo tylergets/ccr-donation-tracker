@@ -15,6 +15,7 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@formkit/icons": "^1.6.5",
     "@formkit/nuxt": "^1.6.5",
     "@formkit/vue": "^1.6.5",
     "@json2csv/plainjs": "^7.0.6",
