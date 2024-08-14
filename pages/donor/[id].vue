@@ -133,9 +133,6 @@ const hasMonitor = computed(() => {
           <FormKit v-model="receivedByLast" type="text" label="Received By" name="receivedBy" validation="required"/>
           <FormKit v-model="totalCount" type="number" disabled label="Total Item Count" />
 
-          <div v-if="donor.isBusiness === 1">
-            <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
-          </div>
 
           <FormKit type="email" :required="requestDestructionLetter" v-model="donorEmail" name="email" label="Donor Email" />
           <FormKit type="number"
@@ -143,6 +140,15 @@ const hasMonitor = computed(() => {
                    step="0.01"
                    help="If you have received any cash for donations, please enter that here."
                    name="centsReceived" label="Cash Received" />
+
+          <div v-if="donor.isBusiness === 1">
+            <FormKit type="checkbox" v-model="requestDestructionLetter" name="dataDestruction" label="Request Destruction Letter" />
+          </div>
+          <div class="pb-4 max-w-[30vw]" v-else>
+            <p class="text-xs">Data destruction letters are only available for businesses. You can override by <a
+                @click="donor.isBusiness = 1"
+                class="text-blue-500 underline">clicking here.</a></p>
+          </div>
 
           <FormKit type="submit"/>
         </div>

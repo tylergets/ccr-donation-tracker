@@ -51,6 +51,7 @@ const thankYouText = [
         </div>
       </div>
 
+
       <div v-if="donation.centsReceived" class="mt-4 text-lg">
         Amount Received - ${{donation.centsReceived}}
       </div>
@@ -90,7 +91,10 @@ const thankYouText = [
         <div>Received For {{ donation.donor.firstName }} {{ donation.donor.lastName }} ({{ donation.donor.email }})
         </div>
       </div>
-
+      
+      <div v-if="donation.notes" class="mt-4 text-xl border p-4">
+        {{donation.notes}}
+      </div>
 
       <div class="mt-2">
         <div v-for="(count, type) in donation.itemCounts">
