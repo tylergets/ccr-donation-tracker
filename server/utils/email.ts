@@ -14,9 +14,6 @@ const transport = nodemailer.createTransport({
   });
 
 export function useEmail() {
-    console.log({
-        host: process.env.MAIL_HOST
-    })
     return {
         send: async ({ to, subject, text }: any) => {
             console.log(`Sending email to ${to}`);
@@ -26,7 +23,6 @@ export function useEmail() {
                 subject,
                 text,
             });
-            console.log(`Email has been sent!`);
             console.log(result);
             return result;
         }
