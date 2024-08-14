@@ -25,6 +25,12 @@
         All Donators
       </nuxt-link>
     </div>
+
+    <div class="flex gap-2 items-center justify-center">
+      <button class="btn-primary" @click="sendReport">
+        Send Donation Report
+      </button>
+    </div>
   </div>
 </template>
 
@@ -34,6 +40,19 @@ import { saveAs } from 'file-saver';
 definePageMeta({
   title: 'Donation Tracker'
 })
+
+async function sendReport() {
+  const resp = await fetch('/api/send_report', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  console.log(resp);
+  debugger
+  alert('Report has been sent!')
+}
 
 function getTime() {
   const now = new Date();

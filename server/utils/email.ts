@@ -3,15 +3,20 @@ import nodemailer from 'nodemailer';
 
 const transport = nodemailer.createTransport({
     host: process.env.MAIL_HOST ?? "localhost", 
-    port: 587,
+    port: process.env.MAIL_HOST === undefined ? 1025 : 587,
     tls: {rejectUnauthorized: false},
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS
-    }
+    ...process.env.MAIL_HOST === undefined ? {} : {
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+        }
+    },
   });
 
 export function useEmail() {
+    console.log({
+        host: process.env.MAIL_HOST
+    })
     return {
         send: async ({ to, subject, text }: any) => {
             console.log(`Sending email to ${to}`);

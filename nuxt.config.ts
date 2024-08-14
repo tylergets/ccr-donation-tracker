@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         "@nuxtjs/tailwindcss",
         "@nuxthub/core",
         '@vueuse/nuxt',
+        'nuxt-cron',
         "@nuxt/icon",
     ],
 
@@ -19,6 +20,11 @@ export default defineNuxtConfig({
         // experimental: {
         //     tasks: true
         // }
+    },
+
+    cron: {
+        timeZone: 'America/New_York',
+        jobsDir: 'cron'
     },
 
     runtimeConfig: {
