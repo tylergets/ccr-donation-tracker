@@ -86,6 +86,7 @@ export default eventHandler(async (event) => {
                     '',
                     ...itemCounts,
                     '',
+                    ...donation.centsReceived ? `Received $${donation.centsReceived}` : '',
                 ].join("\n"),
             });
         }

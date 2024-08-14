@@ -10,7 +10,7 @@
       <div class="mb-2 font-bold text-lg">Donor Information</div>
 
       <div class="flex gap-4">
-        <FormKit type="text" autofocus ref="firstName" name="firstName" label="First Name" />
+        <FormKit type="text" autoFocus ref="firstName" name="firstName" label="First Name" />
       <FormKit type="text" name="lastName" label="Last Name" />
       </div>
       <div class="flex gap-4">

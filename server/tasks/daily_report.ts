@@ -21,6 +21,11 @@ export async function sendDailyReport() {
         }
     });
 
+    if(donations.length === 0) {
+        console.log(`No donations, not sending report`);
+        return;
+    }
+
     const { send } = useEmail();
 
     try {
