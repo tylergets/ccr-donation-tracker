@@ -34,6 +34,7 @@ async function createDonation(body: any) {
       itemCounts: body.items,
       totalCount: totalCount.value,
       dataDestruction: body.dataDestruction,
+      centsReceived: body.centsReceived,
       notes: body.notes,
       email: body.email,
       receivedBy: body.receivedBy,
@@ -137,6 +138,11 @@ const hasMonitor = computed(() => {
           </div>
 
           <FormKit type="email" :required="requestDestructionLetter" v-model="donorEmail" name="email" label="Donor Email" />
+          <FormKit type="number"
+                   min="0"
+                   step="0.01"
+                   help="If you have received any cash for donations, please enter that here."
+                   name="centsReceived" label="Cash Received" />
 
           <FormKit type="submit"/>
         </div>

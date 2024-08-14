@@ -38,6 +38,7 @@ export const donations = sqliteTable('donations', {
   totalCount: integer('totalCount').notNull(),
 
   notes: text('notes'),
+  centsReceived: text('centsReceived'),
 
   dataDestruction: integer('isIndividual').notNull().default(0),
 

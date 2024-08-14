@@ -21,8 +21,6 @@ function formatDate(dateString) {
 }
 
 const thankYouText = [
-  `Thanks for thinking of Cincinnati Computer Reuse when disposing of unneeded tech items. Every computer donated to our nonprofit has value. Working desktops and laptops can be re-imaged with licensed software and prepared for a new home. Broken or obsolete items can be deconstructed and the materials sold as scrap. Scrap sales fund approximately 30% of our operating costs.`,
-  `Our goal is to make access to technology affordable for everyone. Your donation helps further our mission.`
 ];
 
 </script>
@@ -39,19 +37,27 @@ const thankYouText = [
         </div>
       </div>
 
-      <div>
+      <div class="text-lg">
         <div>Donation #{{ donation.id }}</div>
-        <div>Received By {{ donation.receivedBy }}</div>
         <div>Received On {{ formatDate(donation.createdAt) }}</div>
         <div>Received For {{ donation.donor.firstName }} {{ donation.donor.lastName }} ({{ donation.donor.email }})
         </div>
       </div>
 
 
-      <div class="mt-2">
+      <div class="mt-2 text-lg">
         <div v-for="(count, type) in donation.itemCounts">
           {{ type }} - {{ count }}
         </div>
+      </div>
+
+      <div v-if="donation.centsReceived" class="mt-4 text-lg">
+        Amount Received - ${{donation.centsReceived}}
+      </div>
+
+      <div v-if="donation.centsReceived" class="mt-4 text-sm">
+        No goods or services were provided by Cincinnati Computer Reuse in return for this contribution.
+        Impact 100 is a tax exempt organization as described in Section 501(c)3 of the IRS Code – EIN #INSERT_EIN_HERE
       </div>
 
       <div class="mt-2">
