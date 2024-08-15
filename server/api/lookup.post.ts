@@ -1,6 +1,6 @@
 import {useDrizzle} from "~/server/utils/drizzle";
 import * as tables from "../database/schema";
-import { eq } from 'drizzle-orm';
+import { eq, ilike } from 'drizzle-orm';
 
 export default eventHandler(async (event) => {
 
@@ -12,7 +12,7 @@ export default eventHandler(async (event) => {
   } else if (email) {
     conditions.push(eq(tables.donors.email, email));
   } else if (lastName) {
-    conditions.push(eq(tables.donors.lastName, lastName));
+    conditions.push(ilike(tables.donors.lastName, `%${lastName}%`));
   } else {
     throw new Error('No lookup condition provided');
   }

@@ -137,6 +137,7 @@ const hasMonitor = computed(() => {
           <FormKit type="email" :required="requestDestructionLetter" v-model="donorEmail" name="email" label="Donor Email" />
           <FormKit type="number"
                    min="0"
+                   validation="required"
                    step="0.01"
                    help="If you have received any cash for donations, please enter that here."
                    name="centsReceived" label="Cash Received" />
