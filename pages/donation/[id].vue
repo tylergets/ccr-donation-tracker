@@ -65,7 +65,7 @@ if(process.client) {
 
       <div v-if="donation.centsReceived" class="mt-4 text-sm">
         No goods or services were provided by Cincinnati Computer Reuse in return for this contribution.
-        Impact 100 is a tax exempt organization as described in Section 501(c)3 of the IRS Code – EIN #INSERT_EIN_HERE
+        Impact 100 is a tax exempt organization as described in Section 501(c)3 of the IRS Code – EIN #73-1645747
       </div>
 
       <div class="mt-2">
