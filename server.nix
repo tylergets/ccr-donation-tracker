@@ -4,7 +4,7 @@ pkgs.buildNpmPackage rec {
   version = "0.1.0";
 
   src = ./.;
-  npmDepsHash = "sha256-3ADl0JmeY8KKQXQJT+LKsRvNzpF3xwlPY/qNgG3tC7A=";
+  npmDepsHash = "sha256-MWg2ZiVjyKv97UfdwKwJtHkVf7EmvKqm8ByMkM59+XA=";
 
   nodejs = pkgs.nodejs_latest;
 
