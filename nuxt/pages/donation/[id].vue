@@ -23,7 +23,7 @@ function formatDate(dateString) {
 const thankYouText = [
 ];
 
-if(process.client) {
+if(process.cliednt) {
   setTimeout(() => {
     router.push('/create');
   }, 5000);
@@ -35,7 +35,7 @@ if(process.client) {
 
 <template>
   <div v-if="!pending">
-    <div ><h1 class="text-xl font-bold mb-4">Donation Receipt</h1>
+    <div >
 
       <div class="mb-4" v-if="donation.dataDestruction === 1">
         <div class="border p-4 font-bold flex flex-col gap-2">
@@ -45,12 +45,13 @@ if(process.client) {
       </div>
 
 
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center py-4">
         <div class="flex-1">
-          <img src="~/assets/logo.png"/>
+          <img src="~/assets/logo_square.png" class="h-[200px]"/>
         </div>
         <div class="flex-1">
           <div class="text-lg">
+            <h1 class="text-xl font-bold mb-4">Donation Receipt</h1>
             <div>Donation #{{ donation.id }}</div>
             <div>Received On {{ formatDate(donation.createdAt) }}</div>
             <div>Received For {{ donation.donor.firstName }} {{ donation.donor.lastName }} ({{ donation.donor.email }})
