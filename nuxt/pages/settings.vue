@@ -20,6 +20,7 @@ const config = computed(() => {
         <FormKit type="form" :value="config" @submit="updateConfig">
             <FormKit label="Donation Email Text"
             class="w-full"
+            rows="50"
             placeholder="Enter the email text for the donation email"
             help="Sent to the donator after a donation"
             type="textarea" name="emailText"/>
