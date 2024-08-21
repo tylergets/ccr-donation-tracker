@@ -30,9 +30,9 @@
       <button class="btn-primary" @click="sendReport">
         Send Donation Report
       </button>
-      <button class="btn-primary" @click="sendReport">
+      <nuxt-link to="/settings" class="btn-primary">
         Modify Settings
-      </button>
+      </nuxt-link>
     </div>
   </div>
 </template>

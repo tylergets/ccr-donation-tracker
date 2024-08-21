@@ -2,18 +2,37 @@ import { useDrizzle } from "~/server/utils/drizzle";
 import * as tables from "../database/schema";
 
 export default eventHandler(async (event) => {
-  // Read the body of the request
   const body = await readBody(event);
 
-  // Insert the new donor into the database
   const drizzle = useDrizzle();
-  const donor = await drizzle.update(tables.config).set({
-    value: body.value,
-  }).where(eq(tables.config.key, body.key)).returning();
+
+  const returnData = [];
+  for (const [key, value] of Object.entries(body) as any) {
+    console.log({ key, value });
+    // const item = await drizzle
+    //   .update(tables.config)
+    //   .set({
+    //     value: value,
+    //   })
+    //   .where(eq(tables.config.key, key))
+    //   .returning();
+    const item = await drizzle
+      .insert(tables.config)
+      .values({
+        key,
+        value,
+        createdAt: new Date(),
+      } as any)
+      .onConflictDoUpdate({
+        target: tables.config.key,
+        set: { value },
+      });
+    returnData.push(item);
+  }
 
   return {
-    status: 'success',
-    message: 'Config updated successfully',
-    donor
+    status: "success",
+    message: "Config updated successfully",
+    returnData,
   };
 });

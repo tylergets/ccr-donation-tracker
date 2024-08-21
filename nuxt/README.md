@@ -10,4 +10,5 @@ docker run -v /path/on/host:/data -p 80:3000
 
 ## Environment Variables
 
-NUXT_PUBLIC_REPORTS_PASSWORD
+NUXT_PUBLIC_REPORTS_PASSWORD=
+NUXT_PUBLIC_DESTRUCTION_EMAILS=

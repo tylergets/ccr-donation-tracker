@@ -44,10 +44,18 @@ if(process.client) {
         </div>
       </div>
 
-      <div class="text-lg">
-        <div>Donation #{{ donation.id }}</div>
-        <div>Received On {{ formatDate(donation.createdAt) }}</div>
-        <div>Received For {{ donation.donor.firstName }} {{ donation.donor.lastName }} ({{ donation.donor.email }})
+
+      <div class="flex justify-between">
+        <div class="flex-1">
+          <img src="~/assets/logo.png"/>
+        </div>
+        <div class="flex-1">
+          <div class="text-lg">
+            <div>Donation #{{ donation.id }}</div>
+            <div>Received On {{ formatDate(donation.createdAt) }}</div>
+            <div>Received For {{ donation.donor.firstName }} {{ donation.donor.lastName }} ({{ donation.donor.email }})
+            </div>
+          </div>
         </div>
       </div>
 

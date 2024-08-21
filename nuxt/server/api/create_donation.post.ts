@@ -51,14 +51,17 @@ export default eventHandler(async (event) => {
         });
 
     try {
+        const configEmailText = await drizzle.query.config.findFirst({
+            where: (config, {eq}) => eq(config.key, 'emailText')
+        });
+        
         if (donor.email) {
             await send({
                 to: donor.email,
                 from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
                 subject: 'Thank you for your donation!',
                 text: [
-                    ``,
-                    ``,
+                    configEmailText,
                     '',
                     ...itemCounts,
                     '',
@@ -74,21 +77,25 @@ export default eventHandler(async (event) => {
 
     try {
         if (body.dataDestruction) {
-            await send({
-                to: process.env.MAIL_FROM ?? 'office@ccreuse.org',
-                from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
-                replyTo: donor.email ?? body.email,
-                subject: 'Data Destruction Letter Requested',
-                text: [
-                    `A Data Destruction Letter Has Been Requested for Donation #${donation.id}`,
-                    `${donor.firstName ?? ""} ${donor.lastName ?? ""}`,
-                    `${donor.email}`,
-                    '',
-                    ...itemCounts,
-                    '',
-                    ...donation.centsReceived ? `Received $${donation.centsReceived}` : '',
-                ].join("\n"),
-            });
+            const sendTo = process.env.NUXT_PUBLIC_DESTRUCTION_EMAILS?.split(',') ?? []
+            for(const email of sendTo) {
+                console.log('Sending to', email)
+                await send({
+                    to: email,
+                    from: process.env.MAIL_FROM ?? 'office@ccreuse.org',
+                    replyTo: donor.email ?? body.email,
+                    subject: 'Data Destruction Letter Requested',
+                    text: [
+                        `A Data Destruction Letter Has Been Requested for Donation #${donation.id}`,
+                        `${donor.firstName ?? ""} ${donor.lastName ?? ""}`,
+                        `${donor.email}`,
+                        '',
+                        ...itemCounts,
+                        '',
+                        ...donation.centsReceived ? `Received $${donation.centsReceived}` : '',
+                    ].join("\n"),
+                });
+            }
         }
     } catch (e) {
         console.log('Error sending email', e)
