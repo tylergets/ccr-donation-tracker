@@ -79,6 +79,7 @@ export default eventHandler(async (event) => {
                 `A Data Destruction Letter has been requested and will follow on a separate email when the hard-drives have been securely erased or destroyed. Your donation ID is ${donation.id}`,
               ]
             : []),
+          "Please further help us by taking our survey at https://forms.office.com/r/amSSciEvrW",
         ].join("\n"),
       });
     }
