@@ -48,6 +48,12 @@ export const donations = sqliteTable('donations', {
 
 })
 
+export const config = sqliteTable('config', {
+  key: text('key').primaryKey(),
+  value: text('value'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+})
+
 export const donorRelations = relations(donors, ({ many }) => ({
   donations: many(donations)
 }));

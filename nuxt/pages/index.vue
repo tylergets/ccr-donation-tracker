@@ -30,6 +30,9 @@
       <button class="btn-primary" @click="sendReport">
         Send Donation Report
       </button>
+      <button class="btn-primary" @click="sendReport">
+        Modify Settings
+      </button>
     </div>
   </div>
 </template>

@@ -3,7 +3,7 @@ pkgs.buildNpmPackage rec {
   pname = "ccr-donation-tracker";
   version = "0.1.0";
 
-  src = ./.;
+  src = ./nuxt;
   npmDepsHash = "sha256-MWg2ZiVjyKv97UfdwKwJtHkVf7EmvKqm8ByMkM59+XA=";
 
   nodejs = pkgs.nodejs_latest;
