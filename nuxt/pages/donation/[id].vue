@@ -23,7 +23,7 @@ function formatDate(dateString) {
 const thankYouText = [
 ];
 
-if(process.cliednt) {
+if(process.client) {
   setTimeout(() => {
     router.push('/create');
   }, 5000);
