@@ -54,6 +54,21 @@ export const config = sqliteTable('config', {
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
 })
 
+export const volunteers = sqliteTable('volunteers', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  name: text('name').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+})
+
+export const equipmentCheckOuts = sqliteTable('equipmentCheckOuts', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  items: text('itemCounts', { mode: 'json' }).notNull(),
+  volunteerId: integer('volunteerId').references(() => volunteers.id).notNull(),
+  approvedBy: text('approvedBy'),
+  approvedAt: integer('approvedAt', { mode: 'timestamp' }),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
+})
+
 export const donorRelations = relations(donors, ({ many }) => ({
   donations: many(donations)
 }));
@@ -62,5 +77,15 @@ export const donationRelations = relations(donations, ({ one }) => ({
   donor: one(donors, {
     fields: [donations.donorId],
     references: [donors.id],
+  })
+}));
+export const volunteerRelations = relations(volunteers, ({ many }) => ({
+  equipmentCheckOuts: many(equipmentCheckOuts)
+}));
+
+export const equipmentCheckOutsRelations = relations(equipmentCheckOuts, ({ one }) => ({
+  volunteer: one(volunteers, {
+    fields: [equipmentCheckOuts.volunteerId],
+    references: [volunteers.id],
   })
 }));

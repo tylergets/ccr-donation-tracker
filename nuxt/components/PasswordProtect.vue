@@ -19,6 +19,7 @@ function unlock({password}) {
   </div>
   <div v-else>
     <div>
+
       <FormKit type="form" @submit="unlock">
         <FormKit type="password" label="Password" name="password" />
       </FormKit>
