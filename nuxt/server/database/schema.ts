@@ -57,15 +57,17 @@ export const config = sqliteTable('config', {
 export const volunteers = sqliteTable('volunteers', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   name: text('name').notNull(),
+  email: text('email').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
 })
 
 export const equipmentCheckOuts = sqliteTable('equipmentCheckOuts', {
   id: integer('id').primaryKey({ autoIncrement: true }),
-  items: text('itemCounts', { mode: 'json' }).notNull(),
+  items: text('items', { mode: 'json' }).notNull(),
   volunteerId: integer('volunteerId').references(() => volunteers.id).notNull(),
   approvedBy: text('approvedBy'),
   approvedAt: integer('approvedAt', { mode: 'timestamp' }),
+  deniedAt: integer('deniedAt', { mode: 'timestamp' }),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull(),
 })
 

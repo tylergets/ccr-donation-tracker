@@ -1,0 +1,1 @@
+ALTER TABLE `volunteers` ADD `email` text NOT NULL;

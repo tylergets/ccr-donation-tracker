@@ -1,0 +1,1 @@
+ALTER TABLE `equipmentCheckOuts` ADD `deniedAt` integer;

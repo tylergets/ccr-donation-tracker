@@ -11,7 +11,7 @@ async function updateConfig(formData) {
 
 const {data} = await useFetch('/api/get_config');
 const config = computed(() => {
-    return data.value.config;
+    return data.value;
 })
 
 </script>
@@ -24,6 +24,12 @@ const config = computed(() => {
             placeholder="Enter the email text for the donation email"
             help="Sent to the donator after a donation"
             type="textarea" name="emailText"/>
+
+            <FormKit label="Volunteer Equipment Request Form Text"
+            class="w-full"
+            rows="50"
+            placeholder="Enter the text for the header of the Volunteer Equipment Request Form"
+            type="textarea" name="volunteerCheckoutText"/>
         </FormKit>
     </PasswordProtect>
 </template>

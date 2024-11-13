@@ -3,15 +3,26 @@ import * as tables from "../database/schema";
 
 export default eventHandler(async (event) => {
   const drizzle = useDrizzle();
-  const configItems = await drizzle.query.config.findMany();
 
-  const config = configItems.reduce<any>((acc, item) => {
-    acc[item.key] = item.value;
-    return acc;
-  }, {});
+  try {
+    const items = await drizzle
+        .select()
+        .from(tables.config)
+        .execute();
 
-  return {
-    status: "success",
-    config,
-  };
+    // Convert the array of config items into an object
+    const configObject = items.reduce((acc, item) => {
+      //@ts-ignore
+      acc[item.key] = item.value;
+      return acc;
+    }, {});
+
+    return configObject;
+  } catch (error) {
+    console.error(error);
+    return {
+      status: "error",
+      message: "An error occurred while retrieving the config.",
+    };
+  }
 });

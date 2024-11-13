@@ -14,6 +14,10 @@
       Record New Donation
     </nuxt-link>
 
+    <nuxt-link class="!bg-green-800 btn-primary-green" to="/checkout/checkout">
+      Checkout Equipmenet
+    </nuxt-link>
+
     <div class="flex gap-2 items-center justify-center">
       <nuxt-link class="btn-primary" to="/export">
         Export Data
@@ -23,6 +27,9 @@
       </nuxt-link>
       <nuxt-link class="btn-primary" to="/all">
         All Donators
+      </nuxt-link>
+      <nuxt-link class="btn-primary" to="/checkout/approve">
+        Checkouts
       </nuxt-link>
     </div>
 

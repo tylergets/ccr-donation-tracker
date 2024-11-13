@@ -1,0 +1,1 @@
+ALTER TABLE `equipmentCheckOuts` RENAME COLUMN `itemCounts` TO `items`;
